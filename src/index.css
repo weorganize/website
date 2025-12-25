@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* White/Light theme - Feuji inspired */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+
+    /* Light cards with subtle shadows */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Orange accent #E07B00 */
+    --primary: 32 100% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 97%;
+    --secondary-foreground: 220 15% 15%;
+
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 40%;
+
+    /* Orange accent for hover */
+    --accent: 32 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 32 100% 44%;
+
+    --radius: 0.5rem;
+
+    /* Light theme gradients - refined shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(32 100% 44%), hsl(32 100% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 15% 98%));
+    --shadow-glow: 0 0 40px hsl(32 100% 44% / 0.2);
+    --shadow-card: 0 2px 12px hsl(220 15% 15% / 0.06);
+    --shadow-card-hover: 0 8px 30px hsl(220 15% 15% / 0.12);
+    --shadow-elegant: 0 4px 24px hsl(220 15% 15% / 0.08);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 15% 30%;
+    --sidebar-primary: 32 100% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 96%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 32 100% 44%;
+  }
+
+  .dark {
+    /* Dark theme (original) */
+    --background: 240 8% 4%;
+    --foreground: 0 0% 90%;
+
+    --card: 240 6% 8%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 240 6% 8%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 160 100% 44%;
+    --primary-foreground: 240 8% 4%;
+
+    --secondary: 240 5% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 240 5% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 260 100% 44%;
+    --accent-foreground: 0 0% 90%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 90%;
+
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 160 100% 44%;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 210 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Brand logo gradient text */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, hsl(32 100% 44%), hsl(32 100% 55%), hsl(25 100% 50%), hsl(32 100% 44%));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: background-position 0.5s ease, transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+
+  .text-gradient-brand:hover {
+    animation: gradient-shimmer 1.5s ease infinite;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px hsl(32 100% 50% / 0.6)) drop-shadow(0 0 20px hsl(32 100% 50% / 0.3));
+  }
+
+  .text-gradient-brand-light {
+    background: linear-gradient(135deg, hsl(32 100% 55%), hsl(32 100% 65%), hsl(25 100% 60%), hsl(32 100% 55%));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: background-position 0.5s ease, transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+
+  .text-gradient-brand-light:hover {
+    animation: gradient-shimmer 1.5s ease infinite;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px hsl(32 100% 60% / 0.7)) drop-shadow(0 0 20px hsl(32 100% 60% / 0.4));
+  }
+
+  @keyframes gradient-shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Service icon float animation */
+  .service-icon-float {
+    animation: service-float 3s ease-in-out infinite;
+  }
+
+  @keyframes service-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Industry icon pulse animation */
+  .industry-icon-pulse {
+    position: relative;
+  }
+
+  .industry-icon-pulse:hover img {
+    animation: industry-pulse 0.6s ease-in-out;
+  }
+
+  @keyframes industry-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+  }
+
+  /* Hero animated gradient */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+      background-size: 200% 200%;
+    }
+    50% {
+      background-position: 100% 50%;
+      background-size: 200% 200%;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(20px) translateX(-10px);
+    }
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 8s ease-in-out infinite;
+  }
+}
