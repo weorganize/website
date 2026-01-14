@@ -26,6 +26,12 @@ const Careers = lazy(() => import("./pages/Careers"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const Accessibility = lazy(() => import("./pages/Accessibility"));
+const AIEthics = lazy(() => import("./pages/AIEthics"));
+const DataHandling = lazy(() => import("./pages/DataHandling"));
+const Sitemap = lazy(() => import("./pages/Sitemap"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // New pages
@@ -85,6 +91,12 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="/accessibility" element={<Accessibility />} />
+              <Route path="/ai-ethics" element={<AIEthics />} />
+              <Route path="/data-handling" element={<DataHandling />} />
+              <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/thank-you" element={<ThankYou />} />
 
               {/* New pages */}
               <Route path="/case-studies" element={<CaseStudies />} />

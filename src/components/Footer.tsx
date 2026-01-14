@@ -86,7 +86,8 @@ export const Footer = () => {
               <li><Link to="/case-studies" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Case Studies</Link></li>
               <li><Link to="/roi-calculator" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">ROI Calculator</Link></li>
               <li><Link to="/poc-approach" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">PoC Approach</Link></li>
-              <li><Link to="/contact" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Contact</Link></li>
+              <li><Link to="/ai-ethics" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">AI Ethics</Link></li>
+              <li><Link to="/sitemap" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Sitemap</Link></li>
             </ul>
           </div>
         </div>
@@ -96,9 +97,11 @@ export const Footer = () => {
           <p className="text-center md:text-left">
             &copy; {currentYear} weorganize.ai. All rights reserved.
           </p>
-          <div className="flex gap-4 sm:gap-6">
-            <Link to="/privacy" className="hover:text-primary transition-colors py-1">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-primary transition-colors py-1">Terms of Service</Link>
+          <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-5">
+            <Link to="/privacy" className="hover:text-primary transition-colors py-1">Privacy</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors py-1">Terms</Link>
+            <Link to="/cookies" className="hover:text-primary transition-colors py-1">Cookies</Link>
+            <Link to="/accessibility" className="hover:text-primary transition-colors py-1">Accessibility</Link>
           </div>
         </div>
       </div>

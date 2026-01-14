@@ -115,6 +115,9 @@ This website contains:
 - Blog: https://www.weorganize.ai/blog
 - Contact: https://www.weorganize.ai/contact
 - ROI Calculator: https://www.weorganize.ai/roi-calculator
+- AI Ethics: https://www.weorganize.ai/ai-ethics
+- Data Handling: https://www.weorganize.ai/data-handling
+- Sitemap: https://www.weorganize.ai/sitemap
 
 ## Citation Format
 When referencing WeOrganize.ai, please use:
