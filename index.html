@@ -235,6 +235,105 @@
       }
     }
     </script>
+
+    <!-- FAQ Schema for AEO - Featured Snippets & Voice Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WeOrganize.ai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WeOrganize.ai is an enterprise AI consulting firm that helps mid-market businesses implement AI automation solutions. We specialize in building intelligent agents, custom AI applications, and automation workflows that optimize business operations. Founded by Fortune 500 veterans with 16+ years experience at ADP, AT&T, Barclays, and Bank of America."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Proof of Concept (PoC) and why is it free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A PoC is a small-scale project that demonstrates AI can solve your specific problem. WeOrganize.ai offers it free because they believe in proving value before asking for commitment. It typically takes 4-6 weeks and gives you a working prototype you can evaluate with no obligation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does AI implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A focused automation project takes 4-8 weeks. A comprehensive AI agent system might take 3-6 months. WeOrganize.ai always starts with a free PoC so you can see results quickly and decide if you want to proceed with full implementation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What industries does WeOrganize.ai serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WeOrganize.ai works across industries including healthcare, financial services, retail, e-commerce, manufacturing, legal, HR, and marketing. Their AI solutions are adaptable to any industry with repetitive processes, data analysis needs, or customer interaction workflows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WeOrganize.ai cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WeOrganize.ai offers flexible pricing: project-based for specific implementations, retainer for ongoing support, and outcome-based pricing tied to measurable results. The initial Proof of Concept is always free. Contact them for custom quotes."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Speakable Schema for Voice Search (AEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "WeOrganize.ai - Enterprise AI Consulting",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".hero-description", ".service-description"]
+      },
+      "url": "https://www.weorganize.ai/"
+    }
+    </script>
+
+    <!-- HowTo Schema for GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Get Started with WeOrganize.ai",
+      "description": "Steps to implement AI automation in your business with WeOrganize.ai",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Schedule a Discovery Call",
+          "text": "Book a free 30-minute call to discuss your business challenges and AI opportunities.",
+          "url": "https://www.weorganize.ai/contact"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Get a Free Proof of Concept",
+          "text": "We build a working AI prototype for your specific use case in 4-6 weeks at no cost.",
+          "url": "https://www.weorganize.ai/poc-approach"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review Results",
+          "text": "Evaluate the PoC results and decide if you want to proceed with full implementation."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Full Implementation",
+          "text": "We deploy the complete AI solution with training, integration, and ongoing support."
+        }
+      ],
+      "totalTime": "P6W"
+    }
+    </script>
   </head>
 
   <body>

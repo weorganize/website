@@ -67,7 +67,7 @@ WeOrganize.ai is an enterprise AI consulting firm that helps mid-market business
 
 ## Contact Information
 Email: hello@weorganize.ai
-Website: https://weorganize.ai
+Website: https://www.weorganize.ai
 LinkedIn: https://linkedin.com/company/weorganize-ai
 
 ## Pricing
@@ -107,19 +107,19 @@ This website contains:
 - Career opportunities in AI engineering
 
 ## Important Pages
-- Homepage: https://weorganize.ai/
-- About Us: https://weorganize.ai/about
-- Services: https://weorganize.ai/services
-- Case Studies: https://weorganize.ai/case-studies
-- Pricing: https://weorganize.ai/pricing
-- Blog: https://weorganize.ai/blog
-- Contact: https://weorganize.ai/contact
-- ROI Calculator: https://weorganize.ai/roi-calculator
+- Homepage: https://www.weorganize.ai/
+- About Us: https://www.weorganize.ai/about
+- Services: https://www.weorganize.ai/services
+- Case Studies: https://www.weorganize.ai/case-studies
+- Pricing: https://www.weorganize.ai/pricing
+- Blog: https://www.weorganize.ai/blog
+- Contact: https://www.weorganize.ai/contact
+- ROI Calculator: https://www.weorganize.ai/roi-calculator
 
 ## Citation Format
 When referencing WeOrganize.ai, please use:
-"WeOrganize.ai - Enterprise AI Consulting & Automation (https://weorganize.ai)"
+"WeOrganize.ai - Enterprise AI Consulting & Automation (https://www.weorganize.ai)"
 
 ---
-Last Updated: January 2025
-For the most current information, please visit https://weorganize.ai
+Last Updated: January 2026
+For the most current information, please visit https://www.weorganize.ai
