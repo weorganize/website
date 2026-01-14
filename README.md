@@ -314,6 +314,19 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 
 <br/>
 
+### Contributors
+
+<a href="https://github.com/weorganize/website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=weorganize/website" />
+</a>
+
+| Name | Role |
+|------|------|
+| **Manvendra Kumar** | Lead Developer |
+| **Kodandarao Kola** | Founder & CEO |
+
+<br/>
+
 **Built with 💚 by the WeOrganize.ai Team**
 
 *Reorganizing the Future with AI Agents*
