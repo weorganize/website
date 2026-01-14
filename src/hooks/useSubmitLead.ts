@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import {
   sanitizeEmail,
   sanitizeCompanyName,
@@ -84,35 +84,40 @@ export function useSubmitLead(): UseSubmitLeadReturn {
         return true;
       }
 
-      // If Edge Function fails, fall back to direct Supabase insert
-      // (won't send emails but at least captures the lead)
-      console.warn("Edge function failed, falling back to direct insert");
+      // If Edge Function fails and Supabase is configured, fall back to direct insert
+      if (isSupabaseConfigured() && supabase) {
+        console.warn("Edge function failed, falling back to direct insert");
 
-      const { error: dbError } = await supabase.from("leads").insert({
-        email: sanitizedEmail,
-        company: sanitizedCompany,
-        challenge: sanitizedChallenge,
-        source: sanitizedSource,
-      });
+        const { error: dbError } = await supabase.from("leads").insert({
+          email: sanitizedEmail,
+          company: sanitizedCompany,
+          challenge: sanitizedChallenge,
+          source: sanitizedSource,
+        });
 
-      if (dbError) {
-        // If leads table doesn't exist, try contact_submissions as last resort
-        if (dbError.code === "42P01") {
-          const { error: fallbackError } = await supabase
-            .from("contact_submissions")
-            .insert({
-              name: sanitizedCompany,
-              email: sanitizedEmail,
-              company: sanitizedCompany,
-              message: sanitizedChallenge || "Strategy call request",
-            });
+        if (dbError) {
+          // If leads table doesn't exist, try contact_submissions as last resort
+          if (dbError.code === "42P01") {
+            const { error: fallbackError } = await supabase
+              .from("contact_submissions")
+              .insert({
+                name: sanitizedCompany,
+                email: sanitizedEmail,
+                company: sanitizedCompany,
+                message: sanitizedChallenge || "Strategy call request",
+              });
 
-          if (fallbackError) {
-            throw fallbackError;
+            if (fallbackError) {
+              throw fallbackError;
+            }
+          } else {
+            throw dbError;
           }
-        } else {
-          throw dbError;
         }
+      } else {
+        // Supabase not configured, just log
+        console.warn("Supabase not configured, lead submission skipped");
+        throw new Error("Backend not configured");
       }
 
       setIsLoading(false);
