@@ -34,7 +34,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|favicon|icons|logos|robots|sitemap|llms|humans|\\.well-known).*)",
+      "source": "/((?!assets|favicon|icons|logos|robots\\.txt|sitemap\\.xml|llms\\.txt|humans\\.txt|\\.well-known).*)",
       "destination": "/index.html"
     }
   ]
