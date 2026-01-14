@@ -1,7 +1,10 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "weorganize-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "WeOrganize.ai - Enterprise AI Consulting & Automation Solutions",
+  "author": "WeOrganize.ai <hello@weorganize.ai>",
+  "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "dev": "vite",

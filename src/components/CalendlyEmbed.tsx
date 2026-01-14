@@ -47,9 +47,9 @@ export const CalendlyButton = ({
   text?: string;
 }) => {
   const openCalendly = () => {
-    // @ts-ignore - Calendly is loaded via script
+    // @ts-expect-error - Calendly is loaded via external script
     if (window.Calendly) {
-      // @ts-ignore
+      // @ts-expect-error - Calendly is loaded via external script
       window.Calendly.initPopupWidget({ url });
     } else {
       // Fallback to opening in new tab
