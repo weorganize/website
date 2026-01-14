@@ -1,0 +1,27 @@
+/* TEAM */
+
+Founder & CEO: Kodandarao Kola
+Site: https://linkedin.com/in/kodandarao-kola-989b1786
+Location: United States
+
+Head of Automation: Manvendra Kumar
+Role: AI Automation & Workflow Design
+
+/* THANKS */
+
+Built with:
+- React & TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Vite
+
+Hosted on: Vercel
+
+/* SITE */
+
+Last update: 2025/01/11
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS3, ES6+
+Components: React 18, React Router
+IDE: VS Code

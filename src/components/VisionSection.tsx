@@ -13,7 +13,7 @@ export const VisionSection = () => {
               <span className="text-sm font-medium text-primary tracking-wider">OUR VISION</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight">
               Building the <span className="font-semibold">Operating System</span>
               <br />for Intelligent Enterprises
             </h2>
@@ -29,15 +29,15 @@ export const VisionSection = () => {
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6 pt-12">What We're Building Toward</p>
             <div className="grid md:grid-cols-3 gap-10 text-center">
               <div className="space-y-3">
-                <div className="text-3xl md:text-4xl font-light text-primary">Hours → Minutes</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-light text-primary">Hours → Minutes</div>
                 <div className="text-sm text-muted-foreground font-light">Process Acceleration</div>
               </div>
               <div className="space-y-3 border-l border-r border-border/40 px-8">
-                <div className="text-3xl md:text-4xl font-light text-primary">Manual → Auto</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-light text-primary">Manual → Auto</div>
                 <div className="text-sm text-muted-foreground font-light">Workflow Transformation</div>
               </div>
               <div className="space-y-3">
-                <div className="text-3xl md:text-4xl font-light text-primary">24/7</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-light text-primary">24/7</div>
                 <div className="text-sm text-muted-foreground font-light">AI Availability</div>
               </div>
             </div>

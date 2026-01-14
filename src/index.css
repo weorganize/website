@@ -2,25 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* White/Light theme - Feuji inspired */
+    /* Dark Theme - Modern AI Company Style */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    /* Dark cards with subtle elevation */
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Vibrant cyan/teal accent - modern AI feel */
+    --primary: 172 66% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Purple accent for variety */
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 172 66% 50%;
+
+    --radius: 0.625rem;
+
+    /* Dark theme gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(172 66% 50%), hsl(172 66% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(172 66% 50%), hsl(262 83% 58%));
+    --gradient-subtle: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 6%));
+    --shadow-glow: 0 0 60px hsl(172 66% 50% / 0.15);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 40px hsl(172 66% 50% / 0.15);
+    --shadow-elegant: 0 8px 32px hsl(0 0% 0% / 0.4);
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 172 66% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 172 66% 50%;
+  }
+
+  .light {
+    /* Light theme (optional) */
     --background: 0 0% 100%;
     --foreground: 220 15% 15%;
 
-    /* Light cards with subtle shadows */
     --card: 0 0% 100%;
     --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 15%;
 
-    /* Orange accent #E07B00 */
-    --primary: 32 100% 44%;
+    --primary: 172 66% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 15% 97%;
@@ -29,8 +81,7 @@ All colors MUST be HSL.
     --muted: 220 10% 96%;
     --muted-foreground: 220 10% 40%;
 
-    /* Orange accent for hover */
-    --accent: 32 100% 50%;
+    --accent: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -38,66 +89,16 @@ All colors MUST be HSL.
 
     --border: 220 10% 90%;
     --input: 220 10% 90%;
-    --ring: 32 100% 44%;
-
-    --radius: 0.5rem;
-
-    /* Light theme gradients - refined shadows */
-    --gradient-primary: linear-gradient(135deg, hsl(32 100% 44%), hsl(32 100% 55%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 15% 98%));
-    --shadow-glow: 0 0 40px hsl(32 100% 44% / 0.2);
-    --shadow-card: 0 2px 12px hsl(220 15% 15% / 0.06);
-    --shadow-card-hover: 0 8px 30px hsl(220 15% 15% / 0.12);
-    --shadow-elegant: 0 4px 24px hsl(220 15% 15% / 0.08);
+    --ring: 172 66% 40%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 220 15% 30%;
-    --sidebar-primary: 32 100% 44%;
+    --sidebar-primary: 172 66% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 15% 96%;
     --sidebar-accent-foreground: 220 15% 15%;
     --sidebar-border: 220 15% 90%;
-    --sidebar-ring: 32 100% 44%;
-  }
-
-  .dark {
-    /* Dark theme (original) */
-    --background: 240 8% 4%;
-    --foreground: 0 0% 90%;
-
-    --card: 240 6% 8%;
-    --card-foreground: 0 0% 90%;
-
-    --popover: 240 6% 8%;
-    --popover-foreground: 0 0% 90%;
-
-    --primary: 160 100% 44%;
-    --primary-foreground: 240 8% 4%;
-
-    --secondary: 240 5% 12%;
-    --secondary-foreground: 0 0% 90%;
-
-    --muted: 240 5% 12%;
-    --muted-foreground: 0 0% 60%;
-
-    --accent: 260 100% 44%;
-    --accent-foreground: 0 0% 90%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 90%;
-
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
-    --ring: 160 100% 44%;
-
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 215 20% 65%;
-    --sidebar-primary: 210 100% 50%;
-    --sidebar-primary-foreground: 220 25% 6%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 210 100% 50%;
+    --sidebar-ring: 172 66% 40%;
   }
 }
 
@@ -108,13 +109,14 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer utilities {
-  /* Brand logo gradient text */
+  /* Brand logo gradient text - Cyan to Purple */
   .text-gradient-brand {
-    background: linear-gradient(135deg, hsl(32 100% 44%), hsl(32 100% 55%), hsl(25 100% 50%), hsl(32 100% 44%));
+    background: linear-gradient(135deg, hsl(172 66% 50%), hsl(200 80% 55%), hsl(262 83% 58%), hsl(172 66% 50%));
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -127,11 +129,16 @@ All colors MUST be HSL.
   .text-gradient-brand:hover {
     animation: gradient-shimmer 1.5s ease infinite;
     transform: scale(1.05);
-    filter: drop-shadow(0 0 8px hsl(32 100% 50% / 0.6)) drop-shadow(0 0 20px hsl(32 100% 50% / 0.3));
+    filter: drop-shadow(0 0 12px hsl(172 66% 50% / 0.6)) drop-shadow(0 0 30px hsl(262 83% 58% / 0.3));
+  }
+
+  .text-gradient-brand:active {
+    transform: scale(0.98);
+    filter: drop-shadow(0 0 8px hsl(172 66% 50% / 0.4)) drop-shadow(0 0 20px hsl(262 83% 58% / 0.2));
   }
 
   .text-gradient-brand-light {
-    background: linear-gradient(135deg, hsl(32 100% 55%), hsl(32 100% 65%), hsl(25 100% 60%), hsl(32 100% 55%));
+    background: linear-gradient(135deg, hsl(172 66% 60%), hsl(200 80% 65%), hsl(262 83% 68%), hsl(172 66% 60%));
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -144,7 +151,12 @@ All colors MUST be HSL.
   .text-gradient-brand-light:hover {
     animation: gradient-shimmer 1.5s ease infinite;
     transform: scale(1.05);
-    filter: drop-shadow(0 0 8px hsl(32 100% 60% / 0.7)) drop-shadow(0 0 20px hsl(32 100% 60% / 0.4));
+    filter: drop-shadow(0 0 12px hsl(172 66% 60% / 0.7)) drop-shadow(0 0 30px hsl(262 83% 68% / 0.4));
+  }
+
+  .text-gradient-brand-light:active {
+    transform: scale(0.98);
+    filter: drop-shadow(0 0 8px hsl(172 66% 60% / 0.5)) drop-shadow(0 0 20px hsl(262 83% 68% / 0.3));
   }
 
   @keyframes gradient-shimmer {
@@ -157,6 +169,15 @@ All colors MUST be HSL.
     100% {
       background-position: 0% 50%;
     }
+  }
+
+  /* Glow effects for dark theme */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(172 66% 50% / 0.3), 0 0 60px hsl(172 66% 50% / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(262 83% 58% / 0.3), 0 0 60px hsl(262 83% 58% / 0.1);
   }
 
   /* Service icon float animation */
@@ -231,5 +252,33 @@ All colors MUST be HSL.
 
   .animate-float-delayed {
     animation: float-delayed 8s ease-in-out infinite;
+  }
+
+  /* Subtle grid background for hero sections */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(222 30% 18% / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(222 30% 18% / 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Gradient border effect */
+  .gradient-border {
+    position: relative;
+    background: hsl(222 47% 8%);
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(172 66% 50% / 0.5), hsl(262 83% 58% / 0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 }

@@ -1,0 +1,27 @@
+# WeOrganize.ai - AI System Information File
+# For details, see: /llms.txt
+
+name: WeOrganize.ai
+description: Enterprise AI consulting and automation solutions
+url: https://weorganize.ai
+contact: hello@weorganize.ai
+
+services:
+  - AI Solutions & Agents
+  - Custom Development
+  - Data Analytics
+  - Cloud Transformation
+
+specializations:
+  - LLM Implementation
+  - AI Automation
+  - Enterprise Integration
+  - Workflow Optimization
+
+industries:
+  - Healthcare
+  - Financial Services
+  - Retail
+  - Manufacturing
+
+full_details: https://weorganize.ai/llms.txt

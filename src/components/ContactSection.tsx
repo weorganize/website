@@ -132,6 +132,8 @@ export const ContactSection = () => {
                     <label className="text-xs sm:text-sm font-medium text-foreground">Work Email</label>
                     <Input
                       type="email"
+                      inputMode="email"
+                      autoComplete="email"
                       placeholder="you@company.com"
                       required
                       value={email}
@@ -145,6 +147,7 @@ export const ContactSection = () => {
                     <label className="text-xs sm:text-sm font-medium text-foreground">Company</label>
                     <Input
                       placeholder="Your Company"
+                      autoComplete="organization"
                       required
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
@@ -191,7 +194,7 @@ export const ContactSection = () => {
                     )}
                   </Button>
 
-                  <p className="text-[10px] sm:text-xs text-muted-foreground text-center font-light">
+                  <p className="text-xs text-muted-foreground text-center font-light">
                     We'll reach out within 24 hours to schedule your call
                   </p>
                 </form>

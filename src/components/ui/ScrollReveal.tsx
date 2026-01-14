@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ScrollRevealProps {
@@ -17,7 +16,10 @@ export const ScrollReveal = ({
   delay = 0,
   duration = 0.6,
 }: ScrollRevealProps) => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const ref = useRef<HTMLDivElement>(null);
+  // Start visible by default to prevent blank content
+  const [isVisible, setIsVisible] = useState(true);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const getInitialTransform = () => {
     switch (direction) {
@@ -30,6 +32,40 @@ export const ScrollReveal = ({
     }
   };
 
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Check if element is below the viewport on initial load
+    const rect = element.getBoundingClientRect();
+    const isBelowFold = rect.top > window.innerHeight;
+
+    if (isBelowFold) {
+      // Only animate elements that start below the fold
+      setShouldAnimate(true);
+      setIsVisible(false);
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1, rootMargin: '0px' }
+      );
+
+      observer.observe(element);
+      return () => observer.disconnect();
+    }
+    // Elements already in view stay visible without animation
+  }, []);
+
+  // If not animating, just render children directly
+  if (!shouldAnimate) {
+    return <div className={cn(className)}>{children}</div>;
+  }
+
   return (
     <div
       ref={ref}
@@ -37,8 +73,7 @@ export const ScrollReveal = ({
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0) translateX(0) scale(1)' : getInitialTransform(),
-        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
-        willChange: 'opacity, transform',
+        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay / 1000}s, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay / 1000}s`,
       }}
     >
       {children}

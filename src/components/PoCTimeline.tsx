@@ -45,8 +45,8 @@ export const PoCTimeline = () => {
             
             {phases.map((phase, index) => (
               <ScrollReveal key={index} delay={index * 0.15} direction="up">
-                <Card 
-                  className="p-6 sm:p-8 border border-border/40 bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] relative transition-all duration-300 hover:-translate-y-1"
+                <Card
+                  className="p-6 sm:p-8 border border-border/40 bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] active:shadow-[var(--shadow-card)] relative transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
                 >
                   {/* Phase number */}
                   <div className="absolute -top-5 sm:-top-6 left-6 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold text-base sm:text-lg shadow-md">

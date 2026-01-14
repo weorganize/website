@@ -9,7 +9,11 @@ export const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Top Section: Logo + Social Row */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 pb-8 sm:pb-10 mb-8 sm:mb-10 border-b border-background/10">
-          <Link to="/" className="flex flex-col">
+          <Link
+            to="/"
+            className="flex flex-col cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <span className="font-bold text-lg sm:text-xl text-gradient-brand-light">weorganize.ai</span>
             <span className="text-background/50 text-[10px] sm:text-xs font-light">AI Solutions for Enterprise</span>
           </Link>
@@ -35,9 +39,9 @@ export const Footer = () => {
             <h3 className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5">Company</h3>
             <ul className="space-y-2 sm:space-y-3">
               <li><Link to="/about" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">About Us</Link></li>
-              <li><Link to="/poc-approach" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Our Approach</Link></li>
+              <li><Link to="/team" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Our Team</Link></li>
+              <li><Link to="/pricing" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Pricing</Link></li>
               <li><Link to="/careers" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Careers</Link></li>
-              <li><Link to="/contact" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Contact</Link></li>
             </ul>
           </div>
 
@@ -74,14 +78,16 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* About */}
+          {/* Resources */}
           <div>
-            <p className="text-background/50 text-xs sm:text-sm leading-relaxed font-light mb-4">
-              Building AI solutions that help businesses automate workflows, make better decisions, and scale operations.
-            </p>
-            <p className="text-background/40 text-xs font-light">
-              Delaware, USA
-            </p>
+            <h3 className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5">Resources</h3>
+            <ul className="space-y-2 sm:space-y-3">
+              <li><Link to="/blog" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Blog</Link></li>
+              <li><Link to="/case-studies" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Case Studies</Link></li>
+              <li><Link to="/roi-calculator" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">ROI Calculator</Link></li>
+              <li><Link to="/poc-approach" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">PoC Approach</Link></li>
+              <li><Link to="/contact" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light block py-1">Contact</Link></li>
+            </ul>
           </div>
         </div>
 

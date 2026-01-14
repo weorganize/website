@@ -11,31 +11,48 @@ import { VisionSection } from "@/components/VisionSection";
 import { ContactSection } from "@/components/ContactSection";
 import { InNumbersSection } from "@/components/InNumbersSection";
 import { DesignPartnerSection } from "@/components/DesignPartnerSection";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQ, faqData } from "@/components/FAQ";
+import { TrustBadges } from "@/components/TrustBadges";
 import { SEO } from "@/components/SEO";
 import { StickyCtaBar } from "@/components/StickyCtaBar";
+import { CookieConsent } from "@/components/CookieConsent";
+import { BackToTop } from "@/components/BackToTop";
+import { SimpleChatButton } from "@/components/LiveChat";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
-        title="Weorganize.ai - Reorganizing the Future with AI Agents"
-        description="Build intelligent, autonomous agents that optimize workflows, decisions, and performance. Enterprise AI consulting and automation solutions."
+      <SEO
+        title="WeOrganize.ai - Reorganizing the Future with AI Agents"
+        description="Transform your business with intelligent AI agents and automation. Enterprise-grade AI solutions from Fortune 500 veterans. Free proof of concept. 16+ years experience."
+        keywords="AI consulting, AI automation, enterprise AI, AI agents, LLM development, machine learning, business automation, workflow automation, Azure OpenAI, GPT integration, AI solutions"
+        canonical="https://weorganize.ai/"
+        faq={faqData}
       />
-      
+
       <Navigation />
       <Hero />
+      <TrustBadges />
       <ClientLogos />
       <WhyWeorganize />
       <SolutionsGrid />
       <IndustriesSection />
       <PoCTimeline />
+      <Testimonials />
       <InNumbersSection />
       <DesignPartnerSection />
       <TechStackPremium />
+      <FAQ />
       <VisionSection />
       <ContactSection />
       <Footer />
+
+      {/* Global Components */}
       <StickyCtaBar />
+      <BackToTop />
+      <SimpleChatButton />
+      <CookieConsent />
     </div>
   );
 };

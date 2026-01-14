@@ -32,16 +32,16 @@ export const IndustriesSection = () => {
           {industries.map((industry, index) => (
             <ScrollReveal key={index} delay={index * 0.05}>
               <Card
-                className="bg-card border border-border/40 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-300 hover:-translate-y-1 group h-full"
+                className="bg-card border border-border/40 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] active:shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group h-full"
               >
                 <CardContent className="p-4 sm:p-6 text-center">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-primary/15 transition-colors">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-primary/15 group-active:bg-primary/20 transition-colors">
                     <industry.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-sm sm:text-base text-card-foreground mb-1 sm:mb-2 group-hover:text-primary transition-colors">
                     {industry.title}
                   </h3>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground font-light leading-relaxed">
+                  <p className="text-xs text-muted-foreground font-light leading-relaxed">
                     {industry.description}
                   </p>
                 </CardContent>

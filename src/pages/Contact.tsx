@@ -97,43 +97,64 @@ const Contact = () => {
             <p className="text-muted-foreground text-sm mb-6">
               We'll reach out within 24 hours to schedule your strategy session.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div>
-                <label className="block text-sm font-medium mb-2">Work Email *</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Work Email <span aria-hidden="true">*</span>
+                  <span className="sr-only">(required)</span>
+                </label>
                 <Input
+                  id="email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="you@company.com"
                   required
                   disabled={isLoading}
+                  aria-required="true"
+                  aria-describedby="email-hint"
                 />
+                <span id="email-hint" className="sr-only">Enter your work email address</span>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Company *</label>
+                <label htmlFor="company" className="block text-sm font-medium mb-2">
+                  Company <span aria-hidden="true">*</span>
+                  <span className="sr-only">(required)</span>
+                </label>
                 <Input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="Your company name"
                   required
                   disabled={isLoading}
+                  aria-required="true"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label htmlFor="challenge" className="block text-sm font-medium mb-2">
                   What's the #1 manual process slowing your team down?
                   <span className="text-muted-foreground font-normal ml-1">(optional)</span>
                 </label>
                 <Textarea
+                  id="challenge"
+                  name="challenge"
                   rows={3}
                   value={formData.challenge}
                   onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
                   placeholder="e.g., Processing customer support tickets, manual data entry, document review..."
                   disabled={isLoading}
+                  aria-describedby="challenge-hint"
                 />
+                <span id="challenge-hint" className="sr-only">Describe a manual process you would like to automate</span>
               </div>
               {error && (
-                <p className="text-sm text-red-500 text-center">{error}</p>
+                <p className="text-sm text-red-500 text-center" role="alert" aria-live="polite">{error}</p>
               )}
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
                 {isLoading ? (

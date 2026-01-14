@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  sanitizeEmail,
+  sanitizeCompanyName,
+  sanitizeText,
+  isValidEmail,
+  containsSuspiciousContent,
+} from "@/lib/sanitize";
 
 interface LeadData {
   email: string;
@@ -24,6 +31,37 @@ export function useSubmitLead(): UseSubmitLeadReturn {
     setIsLoading(true);
     setError(null);
 
+    // Sanitize all inputs
+    const sanitizedEmail = sanitizeEmail(data.email);
+    const sanitizedCompany = sanitizeCompanyName(data.company);
+    const sanitizedChallenge = data.challenge ? sanitizeText(data.challenge) : null;
+    const sanitizedSource = data.source ? sanitizeText(data.source) : "website";
+
+    // Validate email format
+    if (!isValidEmail(sanitizedEmail)) {
+      setError("Please enter a valid email address.");
+      setIsLoading(false);
+      return false;
+    }
+
+    // Check for required fields
+    if (!sanitizedCompany) {
+      setError("Please enter your company name.");
+      setIsLoading(false);
+      return false;
+    }
+
+    // Check for suspicious content
+    if (
+      containsSuspiciousContent(data.email) ||
+      containsSuspiciousContent(data.company) ||
+      (data.challenge && containsSuspiciousContent(data.challenge))
+    ) {
+      setError("Invalid input detected. Please try again.");
+      setIsLoading(false);
+      return false;
+    }
+
     try {
       // Try Edge Function first (handles emails)
       const edgeFunctionUrl = `${SUPABASE_URL}/functions/v1/submit-lead`;
@@ -34,10 +72,10 @@ export function useSubmitLead(): UseSubmitLeadReturn {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: data.email,
-          company: data.company,
-          challenge: data.challenge || null,
-          source: data.source || "website",
+          email: sanitizedEmail,
+          company: sanitizedCompany,
+          challenge: sanitizedChallenge,
+          source: sanitizedSource,
         }),
       });
 
@@ -50,14 +88,12 @@ export function useSubmitLead(): UseSubmitLeadReturn {
       // (won't send emails but at least captures the lead)
       console.warn("Edge function failed, falling back to direct insert");
 
-      const { error: dbError } = await supabase
-        .from("leads")
-        .insert({
-          email: data.email.toLowerCase().trim(),
-          company: data.company.trim(),
-          challenge: data.challenge?.trim() || null,
-          source: data.source || "website",
-        });
+      const { error: dbError } = await supabase.from("leads").insert({
+        email: sanitizedEmail,
+        company: sanitizedCompany,
+        challenge: sanitizedChallenge,
+        source: sanitizedSource,
+      });
 
       if (dbError) {
         // If leads table doesn't exist, try contact_submissions as last resort
@@ -65,10 +101,10 @@ export function useSubmitLead(): UseSubmitLeadReturn {
           const { error: fallbackError } = await supabase
             .from("contact_submissions")
             .insert({
-              name: data.company,
-              email: data.email.toLowerCase().trim(),
-              company: data.company.trim(),
-              message: data.challenge || "Strategy call request",
+              name: sanitizedCompany,
+              email: sanitizedEmail,
+              company: sanitizedCompany,
+              message: sanitizedChallenge || "Strategy call request",
             });
 
           if (fallbackError) {

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, Bot, Brain, Cpu, Zap, Code, Smartphone, Plug, Layers, BarChart3, TrendingUp, PieChart, Database, Cloud, GitBranch, Server, Shield, BookOpen, Target, Users, Briefcase, Mail, Lightbulb, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, Bot, Brain, Cpu, Zap, Code, Smartphone, Plug, Layers, BarChart3, TrendingUp, PieChart, Database, Cloud, GitBranch, Server, Shield, BookOpen, Target, Users, Briefcase, Mail, Lightbulb, ArrowRight, DollarSign, FileText, Calculator, Scale } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -53,23 +54,26 @@ const companyCategories = [
     title: "About Us",
     items: [
       { icon: BookOpen, title: "Our Story", desc: "Learn about our journey and mission", link: "/about" },
-      { icon: Target, title: "Vision & Mission", desc: "What drives us forward", link: "/about" },
-      { icon: Users, title: "Leadership Team", desc: "Meet the people behind weorganize.ai", link: "/about" },
+      { icon: Users, title: "Meet the Team", desc: "The experts behind weorganize.ai", link: "/team" },
       { icon: Lightbulb, title: "PoC Approach", desc: "Our proven methodology", link: "/poc-approach" },
+      { icon: DollarSign, title: "Pricing", desc: "Transparent, flexible pricing", link: "/pricing" },
     ]
   },
   {
-    id: "careers",
-    title: "Careers",
+    id: "resources",
+    title: "Resources",
     items: [
-      { icon: Briefcase, title: "Open Positions", desc: "Join our growing team", link: "/careers" },
-      { icon: Users, title: "Culture & Values", desc: "What it's like to work here", link: "/careers" },
+      { icon: FileText, title: "Blog", desc: "Insights on AI automation", link: "/blog" },
+      { icon: Target, title: "Case Studies", desc: "Real results from real clients", link: "/case-studies" },
+      { icon: Calculator, title: "ROI Calculator", desc: "Calculate your potential savings", link: "/roi-calculator" },
+      { icon: Scale, title: "Compare Options", desc: "See how we stack up", link: "/compare" },
     ]
   },
   {
     id: "contact",
     title: "Contact",
     items: [
+      { icon: Briefcase, title: "Careers", desc: "Join our growing team", link: "/careers" },
       { icon: Mail, title: "Get in Touch", desc: "Start a conversation with us", link: "/contact" },
     ]
   },
@@ -115,22 +119,33 @@ export const Navigation = () => {
   const activeCompanyItems = companyCategories.find(c => c.id === activeCompanyCategory)?.items || [];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border/20">
-      <nav className="container mx-auto max-w-7xl px-6 h-18 flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border/20" role="banner">
+      <nav className="container mx-auto max-w-7xl px-6 h-18 flex items-center justify-between py-4" aria-label="Main navigation">
+        <Link
+          to="/"
+          className="flex items-center cursor-pointer hover:opacity-80 transition-opacity z-10"
+          aria-label="WeOrganize.ai - Go to homepage"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <span className="font-bold text-xl tracking-tight text-gradient-brand">weorganize.ai</span>
         </Link>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-10">
           {/* Services Mega Menu */}
-          <div 
-            className="relative dropdown-container" 
-            onMouseEnter={() => setServicesOpen(true)} 
+          <div
+            className="relative dropdown-container"
+            onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button className="text-foreground/80 hover:text-primary transition-colors flex items-center gap-1.5 font-medium text-sm">
-              Services <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+            <button
+              className="text-foreground/80 hover:text-primary active:text-primary transition-colors flex items-center gap-1.5 font-medium text-sm min-h-[44px] px-2"
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+              aria-label="Services menu"
+              onClick={() => setServicesOpen(!servicesOpen)}
+            >
+              Services <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
             </button>
             {servicesOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-[100]">
@@ -142,11 +157,12 @@ export const Navigation = () => {
                         <button
                           key={category.id}
                           className={`w-full text-left px-5 py-3 text-sm font-medium transition-colors ${
-                            activeServiceCategory === category.id 
-                              ? 'text-primary bg-background/10' 
-                              : 'text-background/80 hover:text-background hover:bg-background/5'
+                            activeServiceCategory === category.id
+                              ? 'text-primary bg-background/10'
+                              : 'text-background/80 hover:text-background hover:bg-background/5 active:bg-background/10'
                           }`}
                           onMouseEnter={() => setActiveServiceCategory(category.id)}
+                          onClick={() => setActiveServiceCategory(category.id)}
                         >
                           {category.title}
                         </button>
@@ -161,7 +177,7 @@ export const Navigation = () => {
                             key={idx}
                             to={item.link}
                             onClick={handleLinkClick}
-                            className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary transition-colors group"
+                            className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary active:bg-secondary/80 transition-colors group"
                           >
                             <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               <item.icon className="w-5 h-5" />
@@ -192,13 +208,19 @@ export const Navigation = () => {
           </div>
           
           {/* Company Mega Menu */}
-          <div 
-            className="relative dropdown-container" 
-            onMouseEnter={() => setCompanyOpen(true)} 
+          <div
+            className="relative dropdown-container"
+            onMouseEnter={() => setCompanyOpen(true)}
             onMouseLeave={() => setCompanyOpen(false)}
           >
-            <button className="text-foreground/80 hover:text-primary transition-colors flex items-center gap-1.5 font-medium text-sm">
-              Company <ChevronDown className={`w-4 h-4 transition-transform ${companyOpen ? 'rotate-180' : ''}`} />
+            <button
+              className="text-foreground/80 hover:text-primary active:text-primary transition-colors flex items-center gap-1.5 font-medium text-sm min-h-[44px] px-2"
+              aria-expanded={companyOpen}
+              aria-haspopup="true"
+              aria-label="Company menu"
+              onClick={() => setCompanyOpen(!companyOpen)}
+            >
+              Company <ChevronDown className={`w-4 h-4 transition-transform ${companyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
             </button>
             {companyOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-[100]">
@@ -210,11 +232,12 @@ export const Navigation = () => {
                         <button
                           key={category.id}
                           className={`w-full text-left px-5 py-3 text-sm font-medium transition-colors ${
-                            activeCompanyCategory === category.id 
-                              ? 'text-primary bg-background/10' 
-                              : 'text-background/80 hover:text-background hover:bg-background/5'
+                            activeCompanyCategory === category.id
+                              ? 'text-primary bg-background/10'
+                              : 'text-background/80 hover:text-background hover:bg-background/5 active:bg-background/10'
                           }`}
                           onMouseEnter={() => setActiveCompanyCategory(category.id)}
+                          onClick={() => setActiveCompanyCategory(category.id)}
                         >
                           {category.title}
                         </button>
@@ -229,7 +252,7 @@ export const Navigation = () => {
                             key={idx}
                             to={item.link}
                             onClick={handleLinkClick}
-                            className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary transition-colors group"
+                            className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary active:bg-secondary/80 transition-colors group"
                           >
                             <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                               <item.icon className="w-5 h-5" />
@@ -259,20 +282,30 @@ export const Navigation = () => {
             )}
           </div>
           
+          <ThemeToggle />
           <Link to="/contact">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 shadow-sm">Get Started</Button>
+            <Button className="bg-primary hover:bg-primary/90 active:bg-primary/80 text-primary-foreground font-medium px-6 shadow-sm min-h-[44px]">Get Started</Button>
           </Link>
         </div>
 
         {/* Mobile Menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="w-11 h-11 min-h-[44px] min-w-[44px]">
-              <Menu className="h-6 w-6" />
+            <Button variant="ghost" size="icon" className="w-11 h-11 min-h-[44px] min-w-[44px]" aria-label="Open mobile menu">
+              <Menu className="h-6 w-6" aria-hidden="true" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[350px] bg-background overflow-y-auto">
             <nav className="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8 pb-8">
+              {/* Home Link */}
+              <Link
+                to="/"
+                className="font-semibold text-lg text-foreground hover:text-primary transition-colors py-2 -mx-2 px-2 rounded-lg active:bg-secondary/50"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+
               <div className="space-y-1">
                 <h3 className="font-semibold text-base sm:text-lg text-primary mb-2 sm:mb-3">Services</h3>
                 <Link to="/services/ai-solutions" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>AI Solutions</Link>
@@ -285,7 +318,9 @@ export const Navigation = () => {
               <div className="border-t border-border pt-4 sm:pt-6 space-y-1">
                 <h3 className="font-semibold text-base sm:text-lg text-primary mb-2 sm:mb-3">Company</h3>
                 <Link to="/about" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
-                <Link to="/poc-approach" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>PoC Approach</Link>
+                <Link to="/team" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>Our Team</Link>
+                <Link to="/pricing" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+                <Link to="/blog" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
                 <Link to="/careers" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>Careers</Link>
                 <Link to="/contact" className="block py-3 hover:text-primary transition-colors text-sm sm:text-base active:bg-secondary/50 -mx-2 px-2 rounded-lg" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
               </div>

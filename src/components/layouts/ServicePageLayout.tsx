@@ -8,32 +8,49 @@ interface ServicePageLayoutProps {
   title: string;
   subtitle: string;
   seoDescription: string;
+  seoKeywords?: string;
+  serviceType?: string;
   children: ReactNode;
 }
 
-export const ServicePageLayout = ({ 
-  title, 
-  subtitle, 
+export const ServicePageLayout = ({
+  title,
+  subtitle,
   seoDescription,
-  children 
+  seoKeywords,
+  serviceType,
+  children,
 }: ServicePageLayoutProps) => {
+  // Generate canonical URL based on service title
+  const serviceSlug = title.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
+
   return (
     <PageLayout>
-      <SEO 
+      <SEO
         title={title}
         description={seoDescription}
+        keywords={seoKeywords || `${title}, AI solutions, enterprise services, business automation, WeOrganize.ai`}
+        type="service"
+        canonical={`https://weorganize.ai/services/${serviceSlug}`}
+        breadcrumbs={[
+          { name: "Services", url: "/services" },
+          { name: title, url: `/services/${serviceSlug}` },
+        ]}
+        service={{
+          name: title,
+          description: seoDescription,
+          areaServed: "Worldwide",
+        }}
       />
       <PageHero
         title={title}
         subtitle={subtitle}
         breadcrumbs={[
           { label: "Services", href: "/services" },
-          { label: title, href: "#" }
+          { label: title, href: "#" },
         ]}
       />
-      <div className="py-20">
-        {children}
-      </div>
+      <div className="py-20">{children}</div>
       <ContactCTA />
     </PageLayout>
   );

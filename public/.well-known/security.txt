@@ -1,0 +1,14 @@
+# WeOrganize.ai Security Policy
+# https://securitytxt.org/
+
+Contact: mailto:security@weorganize.ai
+Expires: 2026-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://weorganize.ai/.well-known/security.txt
+
+# Our security commitment
+# We take security seriously and appreciate responsible disclosure.
+# Please report any security vulnerabilities to security@weorganize.ai
+
+Policy: https://weorganize.ai/security-policy
+Hiring: https://weorganize.ai/careers
