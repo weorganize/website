@@ -227,9 +227,29 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 ### Analytics Setup
 
-1. **Google Analytics**: Already configured (`G-07F8K4LWKM`)
-2. **Microsoft Clarity**: Already configured (`v178o42mzb`)
-3. **Google Tag Manager**: Replace `GTM-XXXXXXX` in `index.html`
+| Tool | ID | Status |
+|------|-----|--------|
+| Google Analytics 4 | `G-07F8K4LWKM` | ✅ Active |
+| Google Tag Manager | `GTM-TS77H6TV` | ✅ Active |
+| Microsoft Clarity | `v178o42mzb` | ✅ Active |
+
+### Database (Supabase)
+
+| Table | Purpose |
+|-------|---------|
+| `leads` | Contact form submissions |
+| `subscribers` | Newsletter signups |
+
+```sql
+-- Create subscribers table
+CREATE TABLE subscribers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email VARCHAR(255) NOT NULL UNIQUE,
+  source VARCHAR(100) DEFAULT 'website',
+  status VARCHAR(20) DEFAULT 'active',
+  subscribed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
 
 ### SEO Schemas Included
 
