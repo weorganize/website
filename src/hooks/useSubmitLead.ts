@@ -21,7 +21,7 @@ interface UseSubmitLeadReturn {
   error: string | null;
 }
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
 
 export function useSubmitLead(): UseSubmitLeadReturn {
   const [isLoading, setIsLoading] = useState(false);
