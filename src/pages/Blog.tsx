@@ -5,7 +5,8 @@ import { SEO } from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, User, Linkedin } from "lucide-react";
+import { Calendar, Clock, ArrowRight, User, Linkedin, CheckCircle2, Loader2 } from "lucide-react";
+import { useSubscribe } from "@/hooks/useSubscribe";
 import {
   blogPosts,
   blogCategories,
@@ -85,9 +86,20 @@ const BlogCard = ({ post, featured = false }: { post: BlogPostType; featured?: b
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [email, setEmail] = useState("");
+  const { subscribe, isLoading, error, success } = useSubscribe();
+
   const featuredPosts = getFeaturedPosts();
   const filteredPosts = getPostsByCategory(selectedCategory);
   const regularPosts = filteredPosts.filter((post) => !post.featured || selectedCategory !== "All");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await subscribe({ email, source: "blog-newsletter" });
+    if (result) {
+      setEmail("");
+    }
+  };
 
   return (
     <PageLayout>
@@ -215,28 +227,56 @@ const Blog = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <Card className="max-w-2xl mx-auto p-8 text-center bg-card border-border/40">
-            <h2 className="text-2xl font-semibold mb-2">Stay Updated</h2>
-            <p className="text-muted-foreground mb-6">
-              Get practical AI automation insights delivered to your inbox.
-              No spam, no sales pitches—just valuable content from real implementations.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="text-xs text-muted-foreground mt-4">
-              We respect your privacy. Unsubscribe anytime.
-            </p>
+            {success ? (
+              <div className="py-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 className="w-8 h-8 text-primary" />
+                </div>
+                <h2 className="text-2xl font-semibold mb-2">You're Subscribed!</h2>
+                <p className="text-muted-foreground">
+                  Thank you for subscribing. You'll receive our latest insights directly in your inbox.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-2xl font-semibold mb-2">Stay Updated</h2>
+                <p className="text-muted-foreground mb-6">
+                  Get practical AI automation insights delivered to your inbox.
+                  No spam, no sales pitches—just valuable content from real implementations.
+                </p>
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1 px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                    disabled={isLoading}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Subscribing...
+                      </>
+                    ) : (
+                      "Subscribe"
+                    )}
+                  </button>
+                </form>
+                {error && (
+                  <p className="text-sm text-red-500 mt-3">{error}</p>
+                )}
+                <p className="text-xs text-muted-foreground mt-4">
+                  We respect your privacy. Unsubscribe anytime.
+                </p>
+              </>
+            )}
           </Card>
         </div>
       </section>
