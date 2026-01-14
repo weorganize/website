@@ -69,7 +69,7 @@ export const SimpleChatButton = () => {
 
           <div className="p-4 space-y-3">
             <a
-              href="mailto:hello@weorganize.ai?subject=Website Inquiry"
+              href="mailto:hr@weorganize.ai?subject=Website Inquiry"
               className="block w-full p-3 bg-secondary hover:bg-secondary/80 rounded-lg text-center text-sm font-medium transition-colors"
             >
               Send us an email

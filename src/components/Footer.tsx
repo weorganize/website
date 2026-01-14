@@ -61,9 +61,9 @@ export const Footer = () => {
             <h3 className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5">Get in Touch</h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a href="mailto:hello@weorganize.ai" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light flex items-center gap-2 py-1">
+                <a href="mailto:hr@weorganize.ai" className="text-background/70 hover:text-primary transition-colors text-xs sm:text-sm font-light flex items-center gap-2 py-1">
                   <Mail className="w-4 h-4 text-primary/70 flex-shrink-0" />
-                  hello@weorganize.ai
+                  hr@weorganize.ai
                 </a>
               </li>
               <li>

@@ -62,7 +62,7 @@ const organizationSchema = {
   },
   image: "https://weorganize.ai/og-image.png",
   description: "Enterprise AI consulting and automation solutions. Build intelligent, autonomous agents that optimize workflows, decisions, and performance.",
-  email: "hello@weorganize.ai",
+  email: "hr@weorganize.ai",
   foundingDate: "2024",
   founders: [
     {
@@ -78,7 +78,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: "hello@weorganize.ai",
+    email: "hr@weorganize.ai",
     availableLanguage: ["English"],
   },
   areaServed: {

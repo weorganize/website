@@ -4,7 +4,7 @@
 name: WeOrganize.ai
 description: Enterprise AI consulting and automation solutions
 url: https://weorganize.ai
-contact: hello@weorganize.ai
+contact: hr@weorganize.ai
 
 services:
   - AI Solutions & Agents

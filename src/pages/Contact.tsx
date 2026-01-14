@@ -209,8 +209,8 @@ const Contact = () => {
             <Card className="p-6">
               <Mail className="w-8 h-8 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">Prefer Email?</h3>
-              <a href="mailto:hello@weorganize.ai" className="text-primary hover:underline">
-                hello@weorganize.ai
+              <a href="mailto:hr@weorganize.ai" className="text-primary hover:underline">
+                hr@weorganize.ai
               </a>
               <p className="text-sm text-muted-foreground mt-2">
                 For general inquiries or if you'd rather write first.
