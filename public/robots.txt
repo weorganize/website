@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://weorganize.ai/sitemap.xml
+Sitemap: https://www.weorganize.ai/sitemap.xml
